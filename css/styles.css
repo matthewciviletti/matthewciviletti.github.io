@@ -1,0 +1,141 @@
+body {
+font-family: Arial, sans-serif;
+line-height: 1.6;
+margin: 0;
+color: #111;
+}
+
+header {
+background: #002147;
+color: white;
+padding: 1rem;
+}
+
+nav ul {
+list-style: none;
+display: flex;
+gap: 1rem;
+padding: 0;
+}
+
+nav a {
+color: white;
+text-decoration: none;
+}
+
+nav a:hover,
+nav a:focus {
+text-decoration: underline;
+}
+
+main {
+width: 95%;
+max-width: 1800px;
+margin: auto;
+padding: 2rem;
+}
+
+.skip-link {
+position: absolute;
+left: -9999px;
+}
+
+.skip-link:focus {
+left: 10px;
+top: 10px;
+background: black;
+color: white;
+padding: 8px;
+}
+
+.menu-frame {
+width: 100%;
+border: none;
+height: 60px;
+background: #003366;
+}
+
+footer {
+background: #f2f2f2;
+padding: 1rem;
+text-align: center;
+}
+
+/* Navigation menu */
+
+nav ul {
+list-style: none;
+margin: 0;
+padding: 0;
+display: flex;
+gap: 20px;
+}
+
+nav li {
+display: inline;
+}
+
+nav a {
+color: white;
+text-decoration: none;
+font-weight: bold;
+padding: 8px 12px;
+}
+
+nav a:hover,
+nav a:focus {
+background-color: #0055aa;
+border-radius: 4px;
+}
+
+/* Homepage Pictures */
+.home-links {
+display: flex;
+flex-wrap: wrap;
+justify-content: flex-start;
+gap: 4vw;
+margin-top: 30px;
+}
+
+.home-links img {
+width: 100%;
+max-width: 350px;
+height: auto;
+border-radius: 6px;
+transition: transform 0.2s;
+}
+
+.home-links img:hover {
+transform: scale(1.05);
+}
+
+/* Creating Columns */
+.top-row {
+display: flex;
+flex-wrap: wrap;
+gap: 4vw;
+}
+
+.left-text {
+flex: 2;
+min-width: 300px;
+}
+
+.right-text {
+flex: 1;
+min-width: 250px;
+}
+
+/* Mobile Rules for Display */
+
+@media (max-width: 800px) {
+
+.top-row {
+flex-direction: column;
+}
+
+.home-links {
+justify-content: center;
+}
+
+}

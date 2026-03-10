@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Accessibility Statement | Matthew Civiletti</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header>
+<h1>Matthew Civiletti</h1>
+<iframe src="menu.html" title="Main navigation menu" class="menu-frame"></iframe>
+</header>
+
+<main id="main">
+
+<h2>Accessibility Statement</h2>
+
+<p>
+Matthew Civiletti is committed to ensuring digital accessibility for all users,
+including people with disabilities. We are continually improving the user
+experience for everyone and applying relevant accessibility standards.
+</p>
+
+<h3>Accessibility Standards</h3>
+
+<p>
+This website aims to conform to the
+<strong>Web Content Accessibility Guidelines (WCAG) 2.2 Level AA</strong>.
+These guidelines explain how to make web content more accessible for people
+with a wide range of disabilities, including visual, auditory, cognitive,
+and motor impairments.
+</p>
+
+<h3>Accessibility Features</h3>
+
+<ul>
+<li>Semantic HTML structure using header, navigation, main, and footer elements</li>
+<li>Keyboard-accessible navigation</li>
+<li>Skip navigation link for screen-reader and keyboard users</li>
+<li>Alternative text for meaningful images</li>
+<li>Sufficient color contrast for readability</li>
+<li>Responsive design for different screen sizes</li>
+</ul>
+
+<h3>Ongoing Improvements</h3>
+
+<p>
+Accessibility is an ongoing effort. This website is regularly reviewed to
+identify and address potential accessibility issues.
+</p>
+
+<h3>Feedback</h3>
+
+<p>
+If you experience any difficulty accessing content on this website,
+or if you have suggestions for improving accessibility,
+please contact:
+</p>
+
+<p>
+<strong>Email:</strong> your-email@example.com
+</p>
+
+<p>
+We aim to respond to accessibility feedback as quickly as possible.
+</p>
+
+</main>
+
+<div id="footer"></div>
+
+<script>
+fetch("footer.html")
+.then(r => r.text())
+.then(html => document.getElementById("footer").innerHTML = html);
+</script>
+
+</body>
+</html>
