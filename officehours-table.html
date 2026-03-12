@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {packages: ['corechart', 'table']});
+        google.charts.setOnLoadCallback(drawTable);
+
+        function drawTable() {
+            var query = new google.visualization.Query(
+            'https://docs.google.com/spreadsheets/d/1e76uOo46-XIAJjmd6aIWq6zEH08xuAuNdX6DWfqttBU/gviz/tq?gid=750060647'
+            );
+            query.send(handleQueryResponse);
+        }
+
+        function handleQueryResponse(response) {
+
+            if (response.isError()) {
+                console.log('Error in query: ' + response.getMessage());
+                console.log('Details: ' + response.getDetailedMessage());
+            return;
+            }
+
+            var data = response.getDataTable();
+
+            var table = new google.visualization.Table(
+            document.getElementById('table_div')
+            );
+
+            table.draw(data, {
+            showRowNumber: false,
+            width: '100%',
+            height: 'auto'
+            });
+}
+
+        function getMondayDate() {
+            var today = new Date();
+            var day = today.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+            var diff = day === 0 ? -6 : 1 - day; // Adjust so Monday is always the reference point
+            var monday = new Date(today);
+            monday.setDate(today.getDate() + diff);
+
+            // Format the date as "Monday, February 10"
+            var options = { weekday: 'long', month: 'long', day: 'numeric' };
+            return "These Office Hours Bookings are for the Week of " + monday.toLocaleDateString('en-US', options);
+        }
+
+        window.onload = function() {
+            document.getElementById("weekTitle").innerText = getMondayDate();
+        };
+    </script>
+</head>
+<body>
+    <h2 id="weekTitle"></h2> <!-- Title will update dynamically -->
+    <div id="table_div"></div>
+</body>
+</html>

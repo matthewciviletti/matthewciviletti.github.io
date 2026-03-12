@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Office Hours Scheduler</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+<!-- Paste your booking HTML widget here -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book an Appointment</title>
+</head>
+<body>
+    <h1>Book an Appointment for Office Hours Here</h1>
+    <form id="appointmentForm">
+        <label for="name">Your Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="initials">Your Initials:</label><br>
+        <input type="text" id="initials" name="initials" required><br><br>
+
+        <label for="email">Your email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="topic">What topic would you like to discuss?</label><br>
+        <input type="text" id="topic" name="topic" required><br><br>
+
+        <label for="time">Select Time:</label><br>
+        <select id="time" name="time"></select><br><br>
+
+        <button type="button" onclick="submitForm()">Book Appointment <br> <font size="7"><strong>Please click once</strong></font> <font size="3"> <br> Your appointment will show below after you book and then refresh the page.</font></button>
+    </form>
+
+    <script>
+        // List of unavailable dates (in the format 'YYYY-MM-DD')
+        const unavailableDates = [
+            '2025-02-12',  // Mark February 12 as unavailable
+            // Add more dates here (e.g., '2025-02-14' for Valentine's Day)
+        ];
+
+        function generateAvailableTimes() {
+            const now = new Date();
+            const times = [
+                { day: "T", time: "13:00" },
+                { day: "T", time: "13:30" },
+                { day: "T", time: "14:00" },
+                { day: "T", time: "14:30" },
+                { day: "Th", time: "11:00" },
+                { day: "Th", time: "11:30" },
+                { day: "Th", time: "12:00" },
+                { day: "Th", time: "12:30" }
+            ];
+
+            const daysOfWeek = { "T": 2, "Th": 4 }; // M = 2, Wednesday = 4
+            const select = document.getElementById('time');
+            select.innerHTML = ""; // Clear previous options
+
+            let lastAppointmentPassed = true;
+
+            times.forEach(slot => {
+                const appointmentDate = new Date();
+                const [hour, minute] = slot.time.split(/:| /);
+                const isPM = slot.time.includes("PM") && hour !== "12";
+
+                appointmentDate.setHours(parseInt(hour) + (isPM ? 12 : 0), parseInt(minute), 0, 0);
+
+                // Adjust to the next occurrence of the correct day
+                let targetDay = daysOfWeek[slot.day];
+                let daysUntilNext = (targetDay - now.getDay() + 7) % 7;
+
+                if (daysUntilNext === 0) {
+                    // If it's the same day, check if the time has passed
+                    if (appointmentDate < now) {
+                        return; // Skip past times
+                    }
+                } else {
+                    appointmentDate.setDate(now.getDate() + daysUntilNext);
+                }
+
+                // Ensure appointment is at least 4 hours away AND in the future
+                if (appointmentDate - now >= 4 * 60 * 60 * 1000) {
+                    lastAppointmentPassed = false;
+
+                    // Check if the appointment date is in the unavailable dates list
+                    const formattedDate = appointmentDate.toISOString().split('T')[0];
+                    if (unavailableDates.includes(formattedDate)) {
+                        return; // Skip this slot if the date is unavailable
+                    }
+
+                    let option = document.createElement("option");
+                    option.value = `${slot.day} ${slot.time}`;
+                    option.textContent = `${slot.day} ${slot.time}`;
+                    select.appendChild(option);
+                }
+            });
+
+            // If all appointments have passed, reset to next Monday
+            if (lastAppointmentPassed) {
+                const nextMonday = new Date();
+                nextMonday.setDate(now.getDate() + ((1 + 7 - now.getDay()) % 7 || 7)); // Move to next Monday
+                nextMonday.setHours(0, 0, 0, 0); // Reset time
+
+                // Re-enable all Monday and Wednesday times for the next cycle
+                times.forEach(slot => {
+                    let option = document.createElement("option");
+                    option.value = `${slot.day} ${slot.time}`;
+                    option.textContent = `${slot.day} ${slot.time}`;
+                    select.appendChild(option);
+                });
+            }
+
+            // If there are no available times, display a "No available times" message
+            if (select.options.length === 0) {
+                let option = document.createElement("option");
+                option.textContent = "No available times";
+                option.disabled = true;
+                select.appendChild(option);
+            }
+        }
+
+        function submitForm() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var initials = document.getElementById('initials').value;
+            var topic = document.getElementById('topic').value;
+            var time = document.getElementById('time').value;
+
+            var formData = { name, email, initials, topic, time };
+
+fetch('https://script.google.com/macros/s/AKfycbwzUmKtiqF4j3isXqaVATzvI-oJgW9W3Qe8L_JGWUqFCfjqouoQrnfHmcb0GsDNrzigfA/exec', {  
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+                mode: 'no-cors' 
+            })
+            .then(response => {
+                alert('Your appointment has been booked!');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error submitting data');
+            });
+        }
+
+        window.onload = generateAvailableTimes; // Populate dropdown on page load
+    </script>
+</body>
+</html>
+
+
+
+<div class="booking-widget">
+
+</div>
+
+</body>
+</html>
