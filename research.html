@@ -16,6 +16,14 @@
 </header>
 
 <main id="main">
+
+<style>
+  body {
+    font-family: Verdana, Helvetica, sans-serif;
+  }
+</style>
+
+
 <center>
 <h1>My Research</h1>
 </center>
@@ -23,7 +31,7 @@
 <hr class="gradient-divider">
 
 <p style="font-family: Verdana;">I build mathematical models to understand the universe. I have a number of different interests, including the very early universe and the Search for Extraterrestrial Intelligence (SETI). 
-   Below, I link to an article in Universe Today about my research on SETI. Below that, I describe my research in two separate drop-down boxes.</p>
+   Below, I link to an article in Universe Today about my research on SETI. Below that, I describe my research in multiple drop-down boxes.</p>
 
 <h2>Media Articles About My Research</h2>
 <hr class="fancy-line">
@@ -34,6 +42,161 @@
 <img src="images/UniverseToday.gif" alt="This picture brings you a Universe Today article about me research.">
 </a>
 </div>
+
+
+<hr class="gradient-divider">
+<h1>SETI and the Fermi Paradox for a General Audience</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details class="blog-post">
+<summary>Introduction</summary>
+<p>
+
+<div class="top-row">
+<div class="left-text">
+
+I am very interested in the Fermi paradox, which is the apparent contradiction between the vast number of planets in our galaxy (i.e., the Milky Way (MW)) and the evident lack of intelligent life. For example, 
+we now know that at least half of the stars in MW have planets. Since there are at least around 100 billion stars in the MW, and planetary systems often have multiple planets, the MW must have at least 
+100 billion to perhaps 1 trillion planets.
+<br>
+<br>
+Suppose that for every million planets in the MW, one can support life sufficient to allow the evolution of intelligent life. This might seem to imply that life is rare, but actually it predicts at least
+10<sup>11</sup>/10<sup>6</sup> = 100,000 intelligent MW lifeforms. As Enrico Fermi famously asked in 1950, where is everyone?
+<br>
+<br>
+I think this paradox is made even more acute by considering the vastness of time and not just of space. We now know [2] that the MW is at least 12 or 13 billion years old, estimating conservatively. We also 
+know [3] that the first stars formed at around the same time. Our Solar System, however, is only 4.6 billion years old. This implies that there are billions of planetary systems that are billions of years older
+than our own. Even if just one civilisation evolved billions of years ago, and never developed technology better than 21<sup>st</sup> century human technology, this one civilisation could have colonised the 
+entire MW in around 1.5 billion years. So why aren't there signs of this civilisation's exitence? If such a civilisation evolved, say, 10 billion years ago and has survived to this day, it in fact could 
+have spread itself around the MW several times over. Thus, we are not just contending with the vast number of planets in the MW, but also the vast amount of time during which civilisations have had to evolve 
+and leave signs of their existence.  
+<br>
+<br>
+To help solve this paradox, astronomers have been searching for alien radio signals for about 60 years. This is known as the Search for Extraterrestrial Intelligence (SETI), and, despite considerable efforts,
+no alien signals have been discovered. This makes one wonder how significant SETI has been; in other words, can we use this null result to help answer the Fermi paradox? My research [1] shows that the answer
+to this question is yes. By building a mathematical model to compute the probability of at least one SETI observation, we can connect the null SETI result to the underlying parameters. 
+<br>
+<br>
+The GIF to the right describes the basic conception of my model. Suppose that N alien civilisations randomly arise in the MW; each civilisation is a red dot, and the MW is the circle that has a radius R. Each civilisation 
+emits radio signals over a period of time t. The larger N and t are, the greater the probability that at least one signal would have been observed by now by SETI; I show that this probability is
+
+<center>
+<p style="font-size:150%;">℘ = 1 - e<sup>-PN</sup>,</p>
+</center>
+
+assuming that the probability P of observing each signal is identical and much smaller than one. Moreover, I show in my paper that, if P is much smaller than one, then P is about 0.6t/R. For example, this 
+implies that the number of civilisations N is about -5ln(0.01)/(3*t/R) = 7.7/δ, where δ = t/R and ℘ = 0.99. In words, this means that we can constrain the number of civilsations based upon the null SETI result;
+in this case, we're finding a relationship between N and t/R if the likelihood of finding at least one signal is 99%. 
+<br>
+<br>
+We can go further and connect my model to the Drake equation, which is an equation which connects N to seven parameters that we can independently determine. The Drake equation is
+
+<center>
+<p style="font-size:150%;"> N = r<sub>∗</sub>f<sub>p</sub> n<sub>e</sub> f<sub>l</sub> f<sub>i</sub>f<sub>c</sub> l ≡ 𝒩l,</p>
+</center>
+
+where
+
+ <ul>
+        <li style="font-family: Verdana;">r<sub>∗</sub> is the number of stars forming per year in the MW;</li>
+        <li style="font-family: Verdana;">f<sub>p</sub> is the fraction of such stars with planets;</li>
+        <li style="font-family: Verdana;">n<sub>e</sub> is the number of habitable planets, per planetary system;</li>
+        <li style="font-family: Verdana;">f<sub>l</sub> is the fraction of habitable planets on which life evolves;</li>
+        <li style="font-family: Verdana;">f<sub>i</sub> is the fraction of life-bearing planets on which intelligent life evolves;</li>
+        <li style="font-family: Verdana;">f<sub>c</sub> is the fraction of intelligent lifeforms which emit EM radiation;</li>
+        <li style="font-family: Verdana;">l is the mean number of years during which intelligent lifeforms emit EM radiation.</li>
+</ul>
+Some of these parameters we know. For instance, we know that r<sub>∗</sub> is at least 1/2. The usefulness of my model is that we can connect N to t, since l = t if each civilisation emits EM radiation for the 
+same amount of time. This means that we can use the null SETI result to constrain the 𝒩-l parameter space, placing constraints on the aforementioned seven parameters. 
+
+<br>
+<br>
+<br>
+<br>
+[1] Civiletti, Matthew. 2025. “Quantifying the Fermi Paradox via Passive SETI: A General Framework.” The Open Journal of Astrophysics 8 (December)
+<br>
+[2] Schlaufman, Kevin C., Ian B. Thompson, and Andrew R. Casey. "An ultra metal-poor star near the hydrogen-burning limit." The Astrophysical Journal 867.2 (2018): 98.
+<br>
+[3] Ezzeddine, Rana, and Anna Frebel. "Revisiting the Iron Abundance in the Hyper Iron-poor Star HE 1327–2326 with UV COS/HST Data." The Astrophysical Journal 863.2 (2018): 168.
+</p>
+</div>
+
+<div class="right-text">
+
+ <img src="images/geometricalmodel.gif" alt="attribution symbol" width="400" height="400">
+</div>
+</div>
+</p>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details class="blog-post">
+<summary>Civilisation Lifetimes: a Natural Solution to the Fermi Paradox?</summary>
+<p>
+Coming soon!
+</details>
+
+
+
+
+
+
+
+
+<hr class="gradient-divider">
+<h1>SETI and the Fermi Paradox for a Scientific Audience</h1>
+
+Below I link to code that is referenced in my papers. 
+
+<details class="blog-post">
+<summary>Code</summary>
+<p> 
+
+<div class="course-links">
+
+    <div class="course-card">
+    <a href="r_test.html" target="_blank" rel="noopener noreferrer">
+
+    <img src="images/syllabus.png" 
+     alt="View the course syllabus" 
+     class="card-image">
+
+    <div class="card-title">
+    Code for r_{test}
+    </div>
+
+    </a>
+    </div>
+
+
+</p>
+</details>
+
+
 
 
 </main>

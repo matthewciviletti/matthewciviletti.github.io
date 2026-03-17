@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Matthew Civiletti's Homepage</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header>
+<h1>Matthew Civiletti's Homepage</h1>
+<iframe src="menu.html" title="Main navigation menu" class="menu-frame"></iframe>
+</header>
+
+<main id="main">
+<main id="main">
+
+<center>
+<h1>Code to Compute r_{test}</h1>
+</center>
+<p>
+<pre><code>
+
+
+
+program printNum
+use ieee_arithmetic
+implicit none
+
+! define variables
+REAL :: delta, pi, theta0, t, r0, rtest, rA
+REAL :: eps, thetaE
+REAL :: rAvalue, r0value, rEvalue, rt, totalobsnumber,totaldomain
+REAL :: density, m, w, wholedomainTOTAL
+LOGICAL  ::  percentagecondition
+LOGICAL  ::  wholecirclecondition, incompletecirclecondition
+REAL :: i, j, n, k, p, N0, NA, NE, Nm, Np, NTOTAL
+REAL(kind=16) :: circlenumberpartial, circlenumberwhole, partialdomaincounter, wholedomaincounter
+
+!character(200) :: str
+! integer :: n
+! integer(kind=int64) :: partialcounter, circlenumberwhole, partialdomaincounter, wholedomaincounter
+
+!integer, parameter :: a =  selected_int_kind(20)
+!real (kind = a) :: circlenumberwhole, partialdomaincounter, wholedomaincounter
+integer, allocatable :: seed(:)
+integer :: s
+
+!This generates a random number for the seed.
+call random_seed(size=s)   ! n is processor-dependent
+allocate(seed(s))
+seed = 000899                 ! putting arbitrary seed to all elements
+call random_seed(put=seed) ! effectively initializing the RNG with the seed
+
+pi = 3.141592654
+delta = 1.0/10**1
+N0 = 1.0*10**3
+thetaE = 2
+NA = N0
+Nm = N0
+NP = 1
+
+NTOTAL = 1.0*N0*NA*Nm
+
+do p = 0, NP-1
+
+wholedomaincounter = 0.0
+partialdomaincounter = 0.0
+circlenumberwhole = 0.0
+circlenumberpartial = 0.0
+
+rEvalue = (0.1 + 1.0*p/NP)**0.5
+rEvalue = 0.11
+
+! !$omp parallel do reduction(+:sum) num_threads(500)
+do i = 1, N0
+    !CALL RANDOM_NUMBER(w)
+    !r0value = w**0.5
+    !density = 2.71828**(-i/N0)
+    r0value = 1.0*(i/N0)**0.5
+    !r0 = r0value
+
+    IF ((-0.1/N0 < sin(100*pi*i/N0)).AND.(sin(100*pi*i/N0) < 0.1/N0)) then
+			print*,"The percent done is  ",100.0*i/N0
+    END IF
+
+	do m = 1, Nm
+			CALL RANDOM_NUMBER(t)
+			theta0 =  2.0*pi*t
+			!theta0 =  2.0*pi*m/Nm
+
+			rtest = (rEvalue**2 + r0value**2 - 2*r0value*rEvalue*cos(theta0 - thetaE))**0.5
+
+		do j = 1, NA
+			rA = 2.0*j/NA
+			!CALL RANDOM_NUMBER(t)
+			!rA =  2.0*t
+
+			if (rA < 1.0 - r0value - delta) then
+                wholedomaincounter = wholedomaincounter + 1.0
+
+                IF ((rA < rtest).AND.(rtest < rA + delta)) then
+					circlenumberwhole = circlenumberwhole + 1.0
+                END IF
+
+            end if
+
+            if ((rA > 1.0 - r0value - delta).AND.(rA < 1.0 + r0value - delta)) then
+                partialdomaincounter = partialdomaincounter + 1.0
+
+                IF ((rA < rtest).AND.(rtest < rA + delta)) then
+					circlenumberpartial = circlenumberpartial + 1.0
+					!write(circlenumberpartial, '(I20)') j
+                END IF
+
+            end if
+
+		end do
+
+	end do
+end do
+! !$omp end parallel do
+
+print*, "----------------------"
+print*, "delta is  ",delta
+print*, "rE is  ",rEvalue
+print*, "N0 is  ",N0
+print*, "Whole Domain Proportion is ", wholedomaincounter/NTOTAL
+print*, "Partial Domain Proportion is ", partialdomaincounter/NTOTAL
+print*, "Whole Prob is ",1.0*(circlenumberwhole)/(1.0*NTOTAL/6)/delta
+print*, "Partial Prob is ",1.0*(circlenumberpartial)/(2.0*NTOTAL/3)/delta
+print*, "Total Prob is ",1.0*(circlenumberwhole + circlenumberpartial)/(wholedomaincounter + partialdomaincounter)/delta
+print*, "-------------------"
+
+end do
+
+end program printNum
+
+</code></pre>
+</p>
+</main>
+</main>
+
+<div id="footer"></div>
+
+<script>
+fetch("footer.html")
+.then(r => r.text())
+.then(html => document.getElementById("footer").innerHTML = html);
+</script>
+
+</body>
+</html>

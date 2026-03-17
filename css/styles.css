@@ -430,3 +430,10 @@ cursor: pointer;
 .blog-post[open] {
 background: #ffffff;
 }
+
+
+/*Google Form Code*/
+.form-container {
+max-width: 900px;
+margin: 30px auto;
+}
