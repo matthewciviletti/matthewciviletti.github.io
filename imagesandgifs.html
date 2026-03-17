@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Images and GIFs | Matthew Civiletti</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header>
+<h1>Matthew Civiletti</h1>
+<iframe src="menu.html" title="Main navigation menu" class="menu-frame"></iframe>
+</header>
+
+<main id="main">
+
+<h1>Images and GIFs</h1>
+
+<hr class="gradient-divider">
+
+<h2>Interfence Pattern from Generic Waves</h2>
+
+<p style="font-family: Verdana;">This is an animation of the double-slip experiment. Waves move from the left to the right 
+    toward a barrier that contains two slits. On the other side of the slits, we have a film that records where the waves hit. The waves
+    add together constructively and destructively to produce and interference pattern on the film.</p>
+
+<div class="top-row">
+    <div class="left-text">
+
+    <img src="images/interference.gif" alt="interference pattern GIF" width="800" height="800">
+    </div>
+    
+    <div class="right-text">
+    Credit: Dr. Fu-Kwun Hwang
+    <br>
+    For more information, please see https://www.phy.ntnu.edu.tw/~hwang/hwang.html   
+    </div>
+
+</div>
+
+
+
+
+
+<hr class="gradient-divider">
+
+<h2>Interfence Pattern from Electrons</h2>
+
+<p style="font-family: Verdana;">This is a static image of the double-slip experiment. Instead of emitting waves, however, electrons are emitted one at a time 
+    toward the slits. (PLease read the blurb describing the GIF above.) The electrons, which have wave-like properties, form an interference pattern on the film.</p>
+
+<div class="top-row">
+    <div class="left-text">
+
+    <img src="images/electrondoubleslit.png" alt="interference pattern from electrons" width="800" height="800">
+    </div>
+    
+    <div class="right-text">
+    To the right we have a real interference pattern from electrons, produced by Dr. Akira Tonomura. 
+    <br>
+    <br>
+    For some more information, please see https://www.physics.unlv.edu/~jeffery/astro/quantum/qm_double_slit.html
+    </div>
+
+</div>
+
+
+
+
+
+<hr class="gradient-divider">
+
+<h2>The Nonrelativistic Free-Particle Wavefunction</h2>
+
+<p style="font-family: Verdana;">This is a GIF of the free-particle wavefunction in standard non-relativistic quantum mechanics.</p>
+
+<div class="top-row">
+    <div class="left-text">
+
+    <img src="images/freeparticlewavefunction.gif" alt="free-particle wavefunction" width="800" height="800">
+    </div>
+    
+    <div class="right-text">
+    This is my own creation, built using Mathematica. Here I take the token values m = ω = ħ = 1.
+    </div>
+
+</div>
+
+
+</main>
+
+<div id="footer"></div>
+
+<script>
+fetch("footer.html")
+.then(r => r.text())
+.then(html => document.getElementById("footer").innerHTML = html);
+</script>
+
+</body>
+</html>
