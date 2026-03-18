@@ -452,3 +452,21 @@ margin: 30px auto;
     transform: rotate(90deg);
   }
 }
+
+
+
+
+
+
+button:focus,
+input:focus {
+  outline: 3px solid #ffbf47;
+}
+
+
+
+/*note on office hour booking app emphasizing that students should click only once*/
+.important-note {
+  font-size: 1.5rem;
+  color: #b00020; /* optional emphasis */
+}
