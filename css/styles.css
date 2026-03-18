@@ -437,3 +437,18 @@ background: #ffffff;
 max-width: 900px;
 margin: 30px auto;
 }
+
+
+
+
+/*GIF/image rotation code*/
+.arrow {
+  display: inline-block;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .arrow {
+    transform: rotate(90deg);
+  }
+}
